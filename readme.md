@@ -4,7 +4,6 @@ This project provides a local Streamlit dashboard that connects to **Databricks 
 and visualizes cryptocurrency market signals (price, moving averages, cross signals).
 
 It assumes that required Delta tables and views already exist in Databricks:
-
 - `demo_catalog.demo_schema.v_latest_price`
 - `demo_catalog.demo_schema.v_summary_24h`
 - `demo_catalog.demo_schema.v_signals`
@@ -13,10 +12,10 @@ It assumes that required Delta tables and views already exist in Databricks:
 
 ## 1. Prerequisites
 
-- Python 3.10 or later
+- Python
 - A Databricks workspace with:
-  - SQL Warehouse (with Auto Stop configured)
-  - Personal Access Token (PAT)
+  - SQL Warehouse
+  - Personal Access Token
   - The views listed above created and populated
 
 ---
@@ -45,7 +44,7 @@ pip install -r requirements.txt
 Create a `.env` file in the project root:
 
 ```ini
-DATABRICKS_SERVER_HOSTNAME=adb-xxxxxxxxxxxx.XX.azuredatabricks.net
+DATABRICKS_SERVER_HOSTNAME=dbc-xxxxxxxxx-de1a.cloud.databricks.com
 DATABRICKS_HTTP_PATH=/sql/1.0/warehouses/xxxxxx
 DATABRICKS_TOKEN=dapiXXXXXXXXXXXXXX
 CATALOG=demo_catalog
@@ -65,7 +64,7 @@ Start the Streamlit app:
 streamlit run app.py
 ```
 
-Then open the URL shown in the terminal (usually [http://localhost:8501](http://localhost:8501)).
+Then open the URL shown in the terminal: [http://localhost:8501](http://localhost:8501).
 
 ---
 
@@ -84,5 +83,4 @@ Then open the URL shown in the terminal (usually [http://localhost:8501](http://
 ## 6. Cost considerations
 
 - Queries are executed only while the Streamlit app is running.  
-- Each query result is cached for 60 seconds to avoid excessive calls.  
-- Auto Stop on your SQL Warehouse helps keep demo costs minimal.
+- Each query result is cached for 60 seconds to avoid excessive calls.
